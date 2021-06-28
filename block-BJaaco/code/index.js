@@ -111,21 +111,24 @@ function revert(arr) {
     clear(['Ryan', null, 0,  'John', 'Bran']); //['Bran', 'John', 'Ryan']
 */
 
+function unwanted(value) {
+  return (
+    value == false ||
+    value == undefined ||
+    value == "" ||
+    value == 0 ||
+    value == null
+  );
+}
+
 function clear(arr) {
-  let removedArr = [];
-  let clearedArr = [];
+  let final = [];
   for (let item of arr) {
-    if (
-      item == false ||
-      item == undefined ||
-      item == "" ||
-      item == 0 ||
-      item == null
-    ) {
-      removedArr.push(item);
-    } else clearedArr.push(item);
+    if (!unwanted(item)) {
+      final.push(item);
+    }
   }
-  return clearedArr;
+  return final;
 }
 
 // Uncomment the code below and test the output
