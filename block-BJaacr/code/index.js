@@ -27,12 +27,12 @@ console.log(got.houses.length);
 
 // 3. Log the name of all houses in got one by one
 for (let house of got.houses) {
-  console.log(house);
+  console.log(house.name);
 }
 
 // 4. Log the name of all the people in house Starks (index 0) one by one
 for (let people of got.houses[0].people) {
-  console.log(people);
+  console.log(people.name);
 }
 // 5. Log the name of all the people in house Lannisters (index 1) one by one
 for (let people of got.houses[1].people) {
@@ -72,17 +72,22 @@ console.log(got.houses[0].people.length);
 console.log(got.houses[1].people.length);
 // 14. Add the name and size of people in an object like {Starks: 4, Lannisters: 6} and log the object
 
+let houseInfo = {};
+for (let house of got.houses) {
+  houseInfo[house.name] = house.people.length;
+}
+console.log(houseInfo);
 // 15. Log the name of all the people of all the houses in got one by one
-for (let i = 0; i < got.houses.length; i++) {
-  for (let j = 0; j < got.houses[i].people.length; j++) {
-    console.log(got.houses[i].people[j].name);
+for (let house of got.houses) {
+  for (let people of house.people) {
+    console.log(people.name);
   }
 }
 // 16. Push all names into a new array named `allPeople` and log the value array.
 let allPeople = [];
-for (let i = 0; i < got.houses.length; i++) {
-  for (let j = 0; j < got.houses[i].people.length; j++) {
-    allPeople.push(got.houses[i].people[j].name);
+for (let house of got.houses) {
+  for (let people of house.people) {
+    allPeople.push(people.name);
   }
 }
 console.log(allPeople);
@@ -90,14 +95,14 @@ console.log(allPeople);
 console.log(allPeople.length);
 // 18. Push all descriptions into an array named `allDescription`
 let allDescription = [];
-for (let i = 0; i < got.houses.length; i++) {
-  for (let j = 0; j < got.houses[i].people.length; j++) {
-    allDescription.push(got.houses[i].people[j].description);
+for (let house of got.houses) {
+  for (let people of house.people) {
+    allDescription.push(people.description);
   }
 }
 // 19. Log the value and length `allDescription`
-console.log(allDescription);
-console.log(allDescription.length);
+console.log(allDescription, allDescription.length);
+
 // 20. Only the the description whose length is more than 30. (use .length property on string to get the length)
 for (let description of allDescription) {
   if (description.length > 30) {
